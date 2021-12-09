@@ -52,9 +52,9 @@ extension Navigation {
         @EnvironmentObject var viewModel: NavigationViewModel
         
         public let label: () -> Label
-        public let destination: Destination
+        public let destination: () -> Destination
         
-        public init(@ViewBuilder label: @escaping () -> Label, destination: Destination) {
+        public init(@ViewBuilder label: @escaping () -> Label, destination: @escaping () -> Destination) {
             self.label = label
             self.destination = destination
         }
@@ -62,13 +62,13 @@ extension Navigation {
         public var body: some View {
             label()
                 .onTapGesture {
-                    viewModel.push(destination)
+                    viewModel.push(destination())
                 }
         }
     }
     
     
-    public struct NavigationBack<Label>: View where Label: View {
+    public struct NavigationBack<Label: View>: View {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
@@ -87,7 +87,7 @@ extension Navigation {
     }
     
     
-    public struct NavigationHome<Label>: View where Label: View {
+    public struct NavigationHome<Label: View>: View {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
