@@ -9,12 +9,7 @@ import SwiftUI
 
 public struct NavigationForward<Label: View, Destination: View>: View {
     
-    @EnvironmentObject var viewModel: NavigationViewModel {
-        willSet {
-            isSet = true
-        }
-    }
-    @State private var isSet: Bool = false
+    @EnvironmentObject var viewModel: NavigationViewModel
     
     public let label: () -> Label
     public let destination: () -> Destination
@@ -27,11 +22,11 @@ public struct NavigationForward<Label: View, Destination: View>: View {
     public var body: some View {
         label()
             .onTapGesture {
-                if isSet {
+                if viewModel.currentScreen != nil {
                     viewModel.push(destination())
                 }
             }
-            //.opacity(isSet ? 1.0 : 0.5)
+            .opacity(viewModel.currentScreen != nil ? 1.0 : 0.5)
     }
 }
 
