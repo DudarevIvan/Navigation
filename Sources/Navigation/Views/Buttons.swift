@@ -25,15 +25,13 @@ public struct NavigationForward<Label: View, Destination: View>: View {
     }
     
     public var body: some View {
-        if isSet {
-            label()
-                .onTapGesture {
+        label()
+            .onTapGesture {
+                if isSet {
                     viewModel.push(destination())
                 }
-        } else {
-            label()
-                .opacity(0.5)
-        }
+            }
+            .opacity(isSet ? 1.0 : 0.5)
     }
 }
 
