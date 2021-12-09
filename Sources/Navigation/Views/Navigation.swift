@@ -72,14 +72,14 @@ extension Navigation {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
-        private let label: Label
+        private let label: () -> Label
         
         public init(@ViewBuilder label: @escaping () -> Label) {
-            self.label = label()
+            self.label = label
         }
         
         public var body: some View {
-            label
+            label()
                 .onTapGesture {
                     viewModel.pop()
                 }
