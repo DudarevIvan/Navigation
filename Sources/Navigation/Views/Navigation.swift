@@ -45,7 +45,7 @@ public struct Navigation<Content: View>: View {
 }
 
 
-extension Navigation {
+//extension View {
     
     public struct NavigationForward<Label: View, Destination: View>: View {
         
@@ -104,4 +104,4 @@ extension Navigation {
                 }
         }
     }
-}
+//}
