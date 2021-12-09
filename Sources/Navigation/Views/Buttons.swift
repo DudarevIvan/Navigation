@@ -14,7 +14,7 @@ public struct NavigationForward<Label: View, Destination: View>: View {
             isSet = true
         }
     }
-    private var isSet: Bool = false
+    @State private var isSet: Bool = false
     
     public let label: () -> Label
     public let destination: () -> Destination
