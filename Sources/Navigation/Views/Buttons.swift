@@ -10,7 +10,7 @@ import SwiftUI
 public struct NavigationForward<Label: View, Destination: View>: View {
     
     @EnvironmentObject var viewModel: NavigationViewModel {
-        mutating didSet {
+        willSet {
             isSet = true
         }
     }
