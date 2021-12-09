@@ -31,7 +31,7 @@ public struct NavigationForward<Label: View, Destination: View>: View {
                     viewModel.push(destination())
                 }
             }
-            .opacity(isSet ? 1.0 : 0.5)
+            //.opacity(isSet ? 1.0 : 0.5)
     }
 }
 
