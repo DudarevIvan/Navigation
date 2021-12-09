@@ -47,7 +47,7 @@ public struct Navigation<Content: View>: View {
 
 extension Navigation {
     
-    public struct pushButton<Label, Destination>: View where Label: View, Destination: View {
+    public struct NavigationGo<Label, Destination>: View where Label: View, Destination: View {
         
         @EnvironmentObject public var viewModel: NavigationViewModel
         
@@ -67,7 +67,7 @@ extension Navigation {
         }
     }
     
-    struct popButton<Label>: View where Label: View {
+    public struct NavigationBack<Label>: View where Label: View {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
@@ -85,7 +85,7 @@ extension Navigation {
         }
     }
     
-    struct popToRootButton<Label>: View where Label: View {
+    public struct NavigationBackHome<Label>: View where Label: View {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
