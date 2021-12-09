@@ -51,16 +51,16 @@ extension Navigation {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
-        public let label: Label
+        public let label: () -> Label
         public let destination: Destination
         
         public init(@ViewBuilder label: @escaping () -> Label, destination: Destination) {
-            self.label = label()
+            self.label = label
             self.destination = destination
         }
         
         public var body: some View {
-            label
+            label()
                 .onTapGesture {
                     viewModel.push(destination)
                 }
@@ -72,14 +72,14 @@ extension Navigation {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
-        private let label: Label
+        private let label: () -> Label
         
         public init(@ViewBuilder label: @escaping () -> Label) {
-            self.label = label()
+            self.label = label
         }
         
         public var body: some View {
-            label
+            label()
                 .onTapGesture {
                     viewModel.pop()
                 }
@@ -91,14 +91,14 @@ extension Navigation {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
-        private let label: Label
+        private let label: () -> Label
         
         public init(@ViewBuilder label: @escaping () -> Label) {
-            self.label = label()
+            self.label = label
         }
         
         public var body: some View {
-            label
+            label()
                 .onTapGesture {
                     viewModel.popToRoot()
                 }
