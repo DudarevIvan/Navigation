@@ -47,17 +47,59 @@ public struct Navigation<Content: View>: View {
 
 extension Navigation {
     
-    public func push<Content: View>(view: Content) {
-        let item = NavigationItemContainer<Content>(content: view)
-        self.viewModel.push(item.toAnyView())
+    public struct pushButton<Label, Destination>: View where Label: View, Destination: View {
+        
+        @EnvironmentObject public var viewModel: NavigationViewModel
+        
+        public let label: () -> Label
+        public let destination: Destination
+        
+        public init(@ViewBuilder label: @escaping () -> Label, destination: Destination) {
+            self.label = label
+            self.destination = destination
+        }
+        
+        public var body: some View {
+            label()
+                .onTapGesture {
+                    viewModel.push(destination)
+                }
+        }
     }
     
-    public func pop<Content: View>(@ViewBuilder content: @escaping () -> Content) {
-        content()
-        viewModel.pop()
+    struct popButton<Label>: View where Label: View {
+        
+        @EnvironmentObject var viewModel: NavigationViewModel
+        
+        private let label: () -> Label
+        
+        public init(@ViewBuilder label: @escaping () -> Label) {
+            self.label = label
+        }
+        
+        public var body: some View {
+            label()
+                .onTapGesture {
+                    viewModel.pop()
+                }
+        }
     }
     
-    public func popToRoot() {
-        self.viewModel.popToRoot()
+    struct popToRootButton<Label>: View where Label: View {
+        
+        @EnvironmentObject var viewModel: NavigationViewModel
+        
+        private let label: () -> Label
+        
+        public init(@ViewBuilder label: @escaping () -> Label) {
+            self.label = label
+        }
+        
+        public var body: some View {
+            label()
+                .onTapGesture {
+                    viewModel.popToRoot()
+                }
+        }
     }
 }
