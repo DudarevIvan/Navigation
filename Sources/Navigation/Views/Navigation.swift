@@ -47,7 +47,7 @@ public struct Navigation<Content: View>: View {
 
 extension Navigation {
     
-    public struct NavigationForward<Label: View, Destination: View> {
+    public struct NavigationForward<Label: View, Destination: View>: View {
         
         @EnvironmentObject var viewModel: NavigationViewModel
         
