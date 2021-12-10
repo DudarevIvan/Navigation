@@ -8,32 +8,32 @@
 import SwiftUI
 
 
-public enum Destination {
-    case forward(AnyView)
+public enum Destination<D: View> {
+    case forward(D)
     case back
     case home
 }
 
 
-public struct NLink<Label: View>: View {
+public struct NLink<Label: View, D: View>: View {
     
     @EnvironmentObject var viewModel: NavigationViewModel
     
-    public let destination: Destination
+    public let destination: Destination<D>
     public let label: () -> Label
     
-    public init(destination: Destination, @ViewBuilder label: @escaping () -> Label) {
+    public init(destination: Destination<D>, @ViewBuilder label: @escaping () -> Label) {
         self.destination = destination
         self.label = label
     }
     
     public var body: some View {
         switch destination {
-        case .forward(let anyView):
+        case .forward(let screen):
             label()
                 .onTapGesture {
                     if viewModel.currentScreen != nil {
-                        viewModel.push(anyView)
+                        viewModel.push(screen)
                     }
                 }
         case .back:
