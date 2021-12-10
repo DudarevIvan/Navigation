@@ -28,7 +28,7 @@ public struct NLink<Label: View, D: View>: View {
     }
     
     
-    //@ViewBuilder
+    @ViewBuilder
     public var body: some View {
         switch destination {
         case .forward(let screen):
@@ -39,12 +39,12 @@ public struct NLink<Label: View, D: View>: View {
                     }
                 }
         case .back:
-            label()
+            return label()
                 .onTapGesture {
                     viewModel.pop()
                 }
         case .home:
-            label()
+            return label()
                 .onTapGesture {
                     viewModel.popToRoot()
                 }
