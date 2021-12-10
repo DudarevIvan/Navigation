@@ -15,7 +15,7 @@ public enum Destination {
 }
 
 
-public struct Link<Label: View>: View {
+public struct NLink<Label: View>: View {
     
     @EnvironmentObject var viewModel: NavigationViewModel
     
