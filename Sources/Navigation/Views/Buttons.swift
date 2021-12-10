@@ -27,10 +27,12 @@ public struct NLink<Label: View, D: View>: View {
         self.label = label
     }
     
+    
+    //@ViewBuilder
     public var body: some View {
         switch destination {
         case .forward(let screen):
-            label()
+            return label()
                 .onTapGesture {
                     if viewModel.currentScreen != nil {
                         viewModel.push(screen)
