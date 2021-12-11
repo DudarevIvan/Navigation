@@ -2,10 +2,11 @@
 ---
 How to use:
 1. Import this package into your project
+2. Use
 ```Swift
 import Navigation
 ```
-2. Use
+
 ```Swift
 // In the initial view where navigation starts
 var body: some View {
