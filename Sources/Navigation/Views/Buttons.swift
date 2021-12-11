@@ -27,8 +27,6 @@ public struct NLink<Label: View, D: View>: View {
         self.label = label
     }
     
-    
-    @ViewBuilder
     public var body: some View {
         switch destination {
         case .forward(let screen):
