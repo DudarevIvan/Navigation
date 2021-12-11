@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     func toAny() -> AnyView {
         AnyView(self)
     }
