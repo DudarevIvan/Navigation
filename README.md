@@ -36,3 +36,4 @@ NLink(destination: .home) {
   Text("Go to home")
 }
 ```
+You can change os and swift version in file Package.swift
