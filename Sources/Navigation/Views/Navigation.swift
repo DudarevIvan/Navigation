@@ -39,7 +39,7 @@ public struct Navigation<Content: View>: View {
                     .environmentObject(viewModel)
             }
         }
-        .ignoresSafeArea(.all, edges: .top)
-        .background(Color.white)
+        //.ignoresSafeArea(.all, edges: .top)
+        //.background(Color.white)
     }
 }
